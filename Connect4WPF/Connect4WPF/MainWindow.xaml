@@ -7,15 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         >
-    <ItemsControl
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1">
+            <ItemsControl  Background="Blue"
         ItemsSource="{Binding Squares}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Ellipse
-                    Stroke="Magenta">
+                <Ellipse Margin="3"
+                    Stroke="Black">
                     <Ellipse.Style>
                         <Style TargetType="Ellipse">
                             <Style.Triggers>
+                                <DataTrigger Binding="{Binding Token}" Value="-1">
+                                    <Setter Property="Fill" Value="White" />
+                                </DataTrigger>
                                 <DataTrigger Binding="{Binding Token}" Value="0">
                                     <Setter Property="Fill" Value="Black" />
                                 </DataTrigger>
@@ -30,8 +40,22 @@
         </ItemsControl.ItemTemplate>
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid IsItemsHost="True" Columns="6" />
+                <UniformGrid IsItemsHost="True" Columns="{Binding NumColumns}" />
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
     </ItemsControl>
+        </Border>
+        <StackPanel Grid.Row="0">
+            <Button>Jugar</Button>
+        </StackPanel>
+        <UniformGrid Grid.Row="2" Columns="{Binding NumColumns}" HorizontalAlignment="Stretch">
+            <Button>Col1</Button>
+            <Button>Col2</Button>
+            <Button>Col3</Button>
+            <Button>Col4</Button>
+            <Button>Col5</Button>
+            <Button>Col6</Button>
+            <Button>Col7</Button>
+        </UniformGrid>
+    </Grid>
 </Window>
