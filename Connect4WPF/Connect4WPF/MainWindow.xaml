@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Connect4WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="Connect4" Height="350" Width="525" WindowStartupLocation="CenterScreen"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -45,17 +45,19 @@
         </ItemsControl.ItemsPanel>
     </ItemsControl>
         </Border>
-        <StackPanel Grid.Row="0">
-            <Button>Jugar</Button>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label>Elegir Oponente</Label>
+            <ComboBox ItemsSource="{Binding Options}" SelectedValue="{Binding SelectedOption}"></ComboBox>
+            <Button Command="{Binding ClickCommand}">Nuevo Juego</Button>
         </StackPanel>
         <UniformGrid Grid.Row="2" Columns="{Binding NumColumns}" HorizontalAlignment="Stretch">
-            <Button>Col1</Button>
-            <Button>Col2</Button>
-            <Button>Col3</Button>
-            <Button>Col4</Button>
-            <Button>Col5</Button>
-            <Button>Col6</Button>
-            <Button>Col7</Button>
+            <Button Name="btnCol1" Click="btnCol1_Click">Col1</Button>
+            <Button Name="btnCol2" Click="btnCol2_Click">Col2</Button>
+            <Button Name="btnCol3" Click="btnCol3_Click">Col3</Button>
+            <Button Name="btnCol4" Click="btnCol4_Click">Col4</Button>
+            <Button Name="btnCol5" Click="btnCol5_Click">Col5</Button>
+            <Button Name="btnCol6" Click="btnCol6_Click">Col6</Button>
+            <Button Name="btnCol7" Click="btnCol7_Click">Col7</Button>
         </UniformGrid>
     </Grid>
 </Window>

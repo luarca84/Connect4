@@ -25,5 +25,47 @@ namespace Connect4WPF
             InitializeComponent();
             this.DataContext = new BoardViewModel();
         }
+
+        private void btnCol1_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(0);
+        }
+
+        private void btnCol2_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(1);
+        }
+
+        private void btnCol3_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(2);
+        }
+
+        private void btnCol4_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(3);
+        }
+
+        private void btnCol5_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(4);
+        }
+
+        private void btnCol6_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(5);
+        }
+
+        private void btnCol7_Click(object sender, RoutedEventArgs e)
+        {
+            BoardViewModel bvm = (BoardViewModel)this.DataContext;
+            bvm.ClickBtnColumn(6);
+        }
     }
 }

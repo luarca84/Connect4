@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Connect4WPF
 {
+    enum TypeToken { TOKEN_RED = 1, TOKEN_BLACK = 0, TOKEN_NONE = -1 };
+
     public class SquareViewModel : INotifyPropertyChanged
     {
         private int _Token;
