@@ -55,6 +55,7 @@ namespace Connect4WPF
 
             // check if the move will win the game
             //WinState? win = newBoard.CheckWinState();
+            
             WinState? win = GameBoard.CheckWinState();
 
             // if the game is going to end with the move
@@ -66,10 +67,18 @@ namespace Connect4WPF
                 // return 1 (best) for win, and -1 (worst) for lose
                 //else if (win == WinState.BLACKWIN && Game1.AIColor == BoardState.BLACK)
                 else if (win == WinState.BLACKWIN && GameBoard.CurrentPlayer == TypeToken.TOKEN_BLACK)
+                {
+                    //if (deep == 1)
+                    //    return 10000f;
                     return 1f;
+                }
                 //else if (win == WinState.REDWIN && Game1.AIColor == BoardState.RED)
                 else if (win == WinState.REDWIN && GameBoard.CurrentPlayer == TypeToken.TOKEN_RED)
+                {
+                    //if (deep == 1)
+                    //    return 10000f;
                     return 1f;
+                }
                 else
                     return -1f;
             }
