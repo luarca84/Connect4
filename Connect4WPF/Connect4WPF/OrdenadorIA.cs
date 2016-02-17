@@ -11,13 +11,13 @@ namespace Connect4WPF
     class OrdenadorIA
     {
         private const int DEEPNESS = 2;
-        int Strength = 30000;
+        int Strength = 100;// 20;//30000;
         Board board = null;
         int selectedColumn = 0;
         MinMax alg = new MinMax();
         public OrdenadorIA(List<SquareViewModel> squares, int numRows, int numColumns)
         {
-            Strength = 40000;
+            //Strength = 40000;
             alg.SetStrength(Strength);
 
             board = new Board(squares, numRows, numColumns);
@@ -66,19 +66,11 @@ namespace Connect4WPF
                     return 0f;
                 // return 1 (best) for win, and -1 (worst) for lose
                 //else if (win == WinState.BLACKWIN && Game1.AIColor == BoardState.BLACK)
-                else if (win == WinState.BLACKWIN && GameBoard.CurrentPlayer == TypeToken.TOKEN_BLACK)
-                {
-                    //if (deep == 1)
-                    //    return 10000f;
-                    return 1f;
-                }
+                else if (win == WinState.BLACKWIN)// && GameBoard.CurrentPlayer == TypeToken.TOKEN_BLACK)
+                    return -1f;
                 //else if (win == WinState.REDWIN && Game1.AIColor == BoardState.RED)
-                else if (win == WinState.REDWIN && GameBoard.CurrentPlayer == TypeToken.TOKEN_RED)
-                {
-                    //if (deep == 1)
-                    //    return 10000f;
+                else if (win == WinState.REDWIN)// && GameBoard.CurrentPlayer == TypeToken.TOKEN_RED)
                     return 1f;
-                }
                 else
                     return -1f;
             }
@@ -239,25 +231,6 @@ namespace Connect4WPF
             return lstAvailableColumns;
         }
 
-        //internal int CalculateBestColumn()
-        //{
-        //    List<int> lstAvailableColumns = new List<int>();
-        //    for (int c = 0; c < NumColumns; c++)
-        //        if (GetEmptySquareInColumn(c) != null)
-        //            lstAvailableColumns.Add(c);
-
-        //    //Random r = new Random();
-        //    //int selectedIndex = r.Next(0, lstAvailableColumns.Count);
-        //    //int selectedCol = lstAvailableColumns[selectedIndex];
-        //    foreach (int col in lstAvailableColumns)
-        //    {
-        //        Board b = new Board()
-        //    }
-
-
-        //    return selectedCol;
-        //}
-
         public Board() { }
 
         public Board Copy()
@@ -387,6 +360,8 @@ namespace Connect4WPF
                 {
                     //Horizontal
                     Square s1H = GetSquare(row, col);
+                    if (s1H.Token == (int)TypeToken.TOKEN_NONE)
+                        continue;
                     Square s2H = GetSquare(row, col + 1);
                     Square s3H = GetSquare(row, col + 2);
                     Square s4H = GetSquare(row, col + 3);
@@ -463,13 +438,13 @@ namespace Connect4WPF
                 // if the AI would win, increase the value of the move
                 // if ai would lose, or tie, decrese the value
                 //if (winner = WinState.BLACKWIN && Game1.AIColor == BoardState.BLACK)
-                if (winner == WinState.BLACKWIN && GameBoard.CurrentPlayer == TypeToken.TOKEN_BLACK)
-                    value++;
+                if (winner == WinState.BLACKWIN)// && GameBoard.CurrentPlayer == TypeToken.TOKEN_BLACK)
+                    value--;
                 //else if (winner = WinState.REDWIN && Game1.AIColor == BoardState.RED)
-                else if (winner == WinState.REDWIN && GameBoard.CurrentPlayer == TypeToken.TOKEN_RED)
+                else if (winner == WinState.REDWIN)// && GameBoard.CurrentPlayer ==TypeToken.TOKEN_RED)
                     value++;
                 else if (winner == WinState.TIE)
-                    value = 0;
+                    value--;
                 else
                     value--;
             }
